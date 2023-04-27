@@ -46,7 +46,12 @@ class _ImageCarouselState extends State<ImageCarousel> {
             items: _items
                 .map((e) => SizedBox(
                       width: 300, //MediaQuery.of(context).size.width * 0.8,
-                      child: Image.network(e.url, fit: BoxFit.fitWidth),
+                      child: Image.network(
+                        e.url,
+                        fit: BoxFit.fitWidth,
+                        errorBuilder: (context, error, stackTrace) =>
+                            Image.asset('assets/mock_bannner.jpg'),
+                      ),
                     ))
                 .toList(),
           ),
